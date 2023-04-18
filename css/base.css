@@ -1,0 +1,88 @@
+body {
+  font-family: "Andada Pro", serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 20px auto;
+}
+
+.board {
+  position: relative;
+  width: 100%;
+  margin: 0 auto 30px;
+}
+
+.btns {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.btns__actions {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.btn {
+  display: block;
+  text-align: center;
+  background-color: #883f21;
+  color: #ffffff;
+  padding: 5px 30px;
+  border: none;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #a57427;
+}
+.btn__center {
+  margin: 0 auto;
+}
+
+.title {
+  color: #883f21;
+  text-align: center;
+}
+
+.icon-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
+.icon-list {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.icon-list__label {
+  font-weight: 800;
+  min-width: 100px;
+  text-align: right;
+}
+
+.draggable-object {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.draggable-object.one-one {
+  width: 42px;
+  height: 42px;
+}
+
+.draggable-object.two-two {
+  width: 84px;
+  height: 84px;
+}
+
+.draggable-object.three-one {
+  width: 126px;
+  height: 42px;
+}/*# sourceMappingURL=base.css.map */

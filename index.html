@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andada+Pro:wght@400;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <title>HeroQuest Mission Creator</title>
+</head>
+
+<body>
+    <div class="container ">
+        <div class="board">
+            <img src="img/heroquest-board.svg" alt="HeroQuest Board" id="hq-board">
+        </div>
+        <div class="objects">
+            <div class="btns btns__actions">
+                <button id="reset-button" class="btn btn__center">Reset</button>
+                <button id="save-button" class="btn btn__center">Guardar</button>
+                <button id="load-button" class="btn btn__center">Cargar</button>
+                <button id="load-button" class="btn btn__center">Imprimir</button>
+            </div>
+            <h2 class="title title__objects">Diseña tus Propias Misiones y Aventuras</h2>
+            <div class="icon-wrapper">
+                <div class="icon-column">
+                    <div class="icon-list orco-icon">
+                        <div class="icon-list__label">
+                            Orcos:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img src="img/orco.svg" alt="Orco" class="draggable-object one-one">
+                            <img src="img/orco.svg" alt="Orco" class="draggable-object one-one">
+                            <img src="img/orco.svg" alt="Orco" class="draggable-object one-one">
+                            <img src="img/orco.svg" alt="Orco" class="draggable-object one-one">
+                            <img src="img/orco.svg" alt="Orco" class="draggable-object one-one">
+                            <img src="img/orco.svg" alt="Orco" class="draggable-object one-one">
+                        </div>
+                    </div>
+                    <div class="icon-list goblin-icon">
+                        <div class="icon-list__label">
+                            Goblins:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img src="img/goblin.svg" alt="Goblin" class="draggable-object one-one">
+                            <img src="img/goblin.svg" alt="Goblin" class="draggable-object one-one">
+                            <img src="img/goblin.svg" alt="Goblin" class="draggable-object one-one">
+                            <img src="img/goblin.svg" alt="Goblin" class="draggable-object one-one">
+                            <img src="img/goblin.svg" alt="Goblin" class="draggable-object one-one">
+                            <img src="img/goblin.svg" alt="Goblin" class="draggable-object one-one">
+                            <img src="img/goblin.svg" alt="Goblin" class="draggable-object one-one">
+                            <img src="img/goblin.svg" alt="Goblin" class="draggable-object one-one">
+                        </div>
+                    </div>
+                    <div class="icon-list gargola-icon">
+                        <div class="icon-list__label">
+                            Gargola:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img src="img/gargola.svg" alt="Gargola" class="draggable-object one-one">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="icon-column">
+                    <div class="icon-list gargola-icon">
+                        <div class="icon-list__label">
+                            Escaleras:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img src="img/escalera.svg" alt="Escaleras" class="draggable-object two-two">
+                        </div>
+                    </div>
+                    <div class="icon-list gargola-icon">
+                        <div class="icon-list__label">
+                            Armarios:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img src="img/armari.svg" alt="Armari" class="draggable-object three-one">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="to-do">
+                <h2>Per fer!</h2>
+                <ul>
+                    <li>Funció imprimir</li>
+                    <li>Funció guardar</li>
+                    <li>Funció carregar</li>
+                    <li>Afegir la resta de items</li>
+                    <li>Poder escriure notes de missió</li>
+                    <li>Poder escrire titol i descripció de la missió</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs@1.10.11/dist/interact.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
