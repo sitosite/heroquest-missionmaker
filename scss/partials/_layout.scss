@@ -1,12 +1,16 @@
+* {
+    user-select: none;
+}
+
 body {
     font-family: 'Andada Pro', serif;
+    font-size: 18px;
     margin: 0;
     padding: 0;
 }
 
 .container {
-    width: 100%;
-    max-width: 1400px;
+    width: 1400px;
     margin: 20px auto;
 }
 
@@ -22,7 +26,7 @@ body {
     gap: 10px;
 
     &__actions {
-        width: 300px;
+        width: 500px;
         margin: 0 auto;
     }
 }
@@ -32,9 +36,12 @@ body {
     text-align: center;
     background-color: $color1;
     color: $contrast1;
-    padding: 5px 30px;
+    padding: 10px 30px;
     border: none;
     cursor: pointer;
+
+    font-family: 'Andada Pro', serif;
+    font-size: 18px;
 
     &:hover {
         background-color: $color2;
@@ -48,4 +55,12 @@ body {
 .title {
     color: $color1;
     text-align: center;
+    font-size: 40px;
+    &__objects {
+        margin: 30px 0;
+    }
+}
+
+.objects-container {
+    margin-top: 30px;
 }

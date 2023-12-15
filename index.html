@@ -8,22 +8,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Andada+Pro:wght@400;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/base.css">
-    <title>HeroQuest Mission Creator</title>
+    <title>HeroQuest Creador de misiones</title>
 </head>
 
 <body>
     <div class="container ">
-        <div class="board">
-            <img src="img/heroquest-board.svg" alt="HeroQuest Board" id="hq-board">
-        </div>
-        <div class="objects">
+
+        <header>
             <div class="btns btns__actions">
                 <button id="reset-button" class="btn btn__center">Reset</button>
                 <button id="save-button" class="btn btn__center">Guardar</button>
-                <button id="load-button" class="btn btn__center">Cargar</button>
-                <button id="load-button" class="btn btn__center">Imprimir</button>
+                <div class="load-button-wrapper">
+                    <input type="file" id="load-file" accept=".json" hidden>
+                    <label for="load-file" class="btn btn__cente">Cargar</label>
+                </div>
+                <button id="print-button" class="btn btn__center">Imprimir</button>
             </div>
             <h2 class="title title__objects">Diseña tus Propias Misiones y Aventuras</h2>
+        </header>
+        <div class="board">
+            <img src="img/heroquest-board.svg" alt="HeroQuest Board" id="hq-board">
+            <div class="moved-objects"></div>
+        </div>
+        <div class="objects-container">
             <div class="icon-wrapper">
                 <div class="icon-column">
                     <div class="icon-list orco-icon">
@@ -31,12 +38,12 @@
                             Orcos:
                         </div>
                         <div class="icon-list__imgs">
-                            <img src="img/orco.svg" alt="Orco" class="draggable-object one-one">
-                            <img src="img/orco.svg" alt="Orco" class="draggable-object one-one">
-                            <img src="img/orco.svg" alt="Orco" class="draggable-object one-one">
-                            <img src="img/orco.svg" alt="Orco" class="draggable-object one-one">
-                            <img src="img/orco.svg" alt="Orco" class="draggable-object one-one">
-                            <img src="img/orco.svg" alt="Orco" class="draggable-object one-one">
+                            <img id="orco-1" src="img/orco.svg" alt="Orco" class="draggable-object">
+                            <img id="orco-2" src="img/orco.svg" alt="Orco" class="draggable-object">
+                            <img id="orco-3" src="img/orco.svg" alt="Orco" class="draggable-object">
+                            <img id="orco-4" src="img/orco.svg" alt="Orco" class="draggable-object">
+                            <img id="orco-5" src="img/orco.svg" alt="Orco" class="draggable-object">
+                            <img id="orco-6" src="img/orco.svg" alt="Orco" class="draggable-object">
                         </div>
                     </div>
                     <div class="icon-list goblin-icon">
@@ -44,14 +51,57 @@
                             Goblins:
                         </div>
                         <div class="icon-list__imgs">
-                            <img src="img/goblin.svg" alt="Goblin" class="draggable-object one-one">
-                            <img src="img/goblin.svg" alt="Goblin" class="draggable-object one-one">
-                            <img src="img/goblin.svg" alt="Goblin" class="draggable-object one-one">
-                            <img src="img/goblin.svg" alt="Goblin" class="draggable-object one-one">
-                            <img src="img/goblin.svg" alt="Goblin" class="draggable-object one-one">
-                            <img src="img/goblin.svg" alt="Goblin" class="draggable-object one-one">
-                            <img src="img/goblin.svg" alt="Goblin" class="draggable-object one-one">
-                            <img src="img/goblin.svg" alt="Goblin" class="draggable-object one-one">
+                            <img id="goblin-1" src="img/goblin.svg" alt="Goblin" class="draggable-object">
+                            <img id="goblin-2" src="img/goblin.svg" alt="Goblin" class="draggable-object">
+                            <img id="goblin-3" src="img/goblin.svg" alt="Goblin" class="draggable-object">
+                            <img id="goblin-4" src="img/goblin.svg" alt="Goblin" class="draggable-object">
+                            <img id="goblin-5" src="img/goblin.svg" alt="Goblin" class="draggable-object">
+                            <img id="goblin-6" src="img/goblin.svg" alt="Goblin" class="draggable-object">
+                            <img id="goblin-7" src="img/goblin.svg" alt="Goblin" class="draggable-object">
+                            <img id="goblin-8" src="img/goblin.svg" alt="Goblin" class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list esqueleto-icon">
+                        <div class="icon-list__label">
+                            Esqueletos:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="esqueleto-1" src="img/esqueleto.svg" alt="Esqueleto" class="draggable-object">
+                            <img id="esqueleto-2" src="img/esqueleto.svg" alt="Esqueleto" class="draggable-object">
+                            <img id="esqueleto-3" src="img/esqueleto.svg" alt="Esqueleto" class="draggable-object">
+                            <img id="esqueleto-4" src="img/esqueleto.svg" alt="Esqueleto" class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list zombie-icon">
+                        <div class="icon-list__label">
+                            Zombies:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="zombie-1" src="img/zombie.svg" alt="Zombie" class="draggable-object">
+                            <img id="zombie-2" src="img/zombie.svg" alt="Zombie" class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list abominaciones-icon">
+                        <div class="icon-list__label">
+                            Abominaciones:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="abominaciones-1" src="img/abominaciones.svg" alt="Abominaciones"
+                                class="draggable-object one-one">
+                            <img id="abominaciones-2" src="img/abominaciones.svg" alt="Abominaciones"
+                                class="draggable-object one-one">
+                            <img id="abominaciones-3" src="img/abominaciones.svg" alt="Abominaciones"
+                                class="draggable-object one-one">
+                        </div>
+                    </div>
+                    <div class="icon-list caos-icon">
+                        <div class="icon-list__label">
+                            Guerreros del terror:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="caos-1" src="img/caos.svg" alt="Guerreros del terror" class="draggable-object">
+                            <img id="caos-2" src="img/caos.svg" alt="Guerreros del terror" class="draggable-object">
+                            <img id="caos-3" src="img/caos.svg" alt="Guerreros del terror" class="draggable-object">
                         </div>
                     </div>
                     <div class="icon-list gargola-icon">
@@ -59,26 +109,233 @@
                             Gargola:
                         </div>
                         <div class="icon-list__imgs">
-                            <img src="img/gargola.svg" alt="Gargola" class="draggable-object one-one">
+                            <img id="gargola-1" src="img/gargola.svg" alt="Gargola" class="draggable-object">
                         </div>
                     </div>
-
+                    <div class="icon-list trampa-rocas-icon">
+                        <div class="icon-list__label">
+                            Trampas de Bloque Movedizo:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="trampa-rocas-1" src="img/trampa-rocas.svg" alt="Trampas de Bloque Movedizo"
+                                class="draggable-object">
+                            <img id="trampa-rocas-2" src="img/trampa-rocas.svg" alt="Trampas de Bloque Movedizo"
+                                class="draggable-object">
+                            <img id="trampa-rocas-3" src="img/trampa-rocas.svg" alt="Trampas de Bloque Movedizo"
+                                class="draggable-object">
+                            <img id="trampa-rocas-4" src="img/trampa-rocas.svg" alt="Trampas de Bloque Movedizo"
+                                class="draggable-object">
+                            <img id="trampa-rocas-5" src="img/trampa-rocas.svg" alt="Trampas de Bloque Movedizo"
+                                class="draggable-object">
+                            <img id="trampa-rocas-6" src="img/trampa-rocas.svg" alt="Trampas de Bloque Movedizo"
+                                class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list pared-icon">
+                        <div class="icon-list__label">
+                            Casillas Bloqueadas:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="pared-1" src="img/pared.svg" alt="Casillas Bloqueadas" class="draggable-object">
+                            <img id="pared-2" src="img/pared.svg" alt="Casillas Bloqueadas" class="draggable-object">
+                            <img id="pared-3" src="img/pared.svg" alt="Casillas Bloqueadas" class="draggable-object">
+                            <img id="pared-4" src="img/pared.svg" alt="Casillas Bloqueadas" class="draggable-object">
+                            <img id="pared-5" src="img/pared.svg" alt="Casillas Bloqueadas" class="draggable-object">
+                            <img id="pared-6" src="img/pared.svg" alt="Casillas Bloqueadas" class="draggable-object">
+                        </div>
+                    </div>
                 </div>
                 <div class="icon-column">
-                    <div class="icon-list gargola-icon">
+                    <div class="icon-list pared-doble-icon">
+                        <div class="icon-list__label">
+                            Casillas Dobles Bloqueadas:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="pared-doble-1" src="img/pared-doble.svg" alt="Casillas Dobles Bloqueada"
+                                class="draggable-object">
+                            <img id="pared-doble-2" src="img/pared-doble.svg" alt="Casillas Dobles Bloqueada"
+                                class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list puerta-secreta-icon">
+                        <div class="icon-list__label">
+                            Puertas Secretas:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="puerta-secreta-1" src="img/puerta-secreta.svg" alt="Puertas Secretas"
+                                class="draggable-object">
+                            <img id="puerta-secreta-2" src="img/puerta-secreta.svg" alt="Puertas Secretas"
+                                class="draggable-object">
+                            <img id="puerta-secreta-3" src="img/puerta-secreta.svg" alt="Puertas Secretas"
+                                class="draggable-object">
+                            <img id="puerta-secreta-4" src="img/puerta-secreta.svg" alt="Puertas Secretas"
+                                class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list escalera-icon">
                         <div class="icon-list__label">
                             Escaleras:
                         </div>
                         <div class="icon-list__imgs">
-                            <img src="img/escalera.svg" alt="Escaleras" class="draggable-object two-two">
+                            <img id="escalera-1" src="img/escalera.svg" alt="Escaleras"
+                                class="draggable-object two-two">
                         </div>
                     </div>
-                    <div class="icon-list gargola-icon">
+                    <div class="icon-list trampa-lanza-icon">
                         <div class="icon-list__label">
-                            Armarios:
+                            Trampas de lanza:
                         </div>
                         <div class="icon-list__imgs">
-                            <img src="img/armari.svg" alt="Armari" class="draggable-object three-one">
+                            <img id="trampa-lanza-1" src="img/trampa-lanza.svg" alt="Trampas de lanza"
+                                class="draggable-object">
+                            <img id="trampa-lanza-2" src="img/trampa-lanza.svg" alt="Trampas de lanza"
+                                class="draggable-object">
+                            <img id="trampa-lanza-3" src="img/trampa-lanza.svg" alt="Trampas de lanza"
+                                class="draggable-object">
+                            <img id="trampa-lanza-4" src="img/trampa-lanza.svg" alt="Trampas de lanza"
+                                class="draggable-object">
+                            <img id="trampa-lanza-5" src="img/trampa-lanza.svg" alt="Trampas de lanza"
+                                class="draggable-object">
+                            <img id="trampa-lanza-6" src="img/trampa-lanza.svg" alt="Trampas de lanza"
+                                class="draggable-object">
+                            <img id="trampa-lanza-7" src="img/trampa-lanza.svg" alt="Trampas de lanza"
+                                class="draggable-object">
+                            <img id="trampa-lanza-8" src="img/trampa-lanza.svg" alt="Trampas de lanza"
+                                class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list foso-icon">
+                        <div class="icon-list__label">
+                            Trampas de foso:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="foso-1" src="img/foso.svg" alt="Trampas de foso" class="draggable-object">
+                            <img id="foso-2" src="img/foso.svg" alt="Trampas de foso" class="draggable-object">
+                            <img id="foso-3" src="img/foso.svg" alt="Trampas de foso" class="draggable-object">
+                            <img id="foso-4" src="img/foso.svg" alt="Trampas de foso" class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list mesa-icon">
+                        <div class="icon-list__label">
+                            Mesas:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="mesa-1" src="img/mesa.svg" alt="Mesas" class="draggable-object">
+                            <img id="mesa-2" src="img/mesa.svg" alt="Mesas" class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list cofre-icon">
+                        <div class="icon-list__label">
+                            Cofres:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="cofre-1" src="img/cofre.svg" alt="Armari" class="draggable-object">
+                            <img id="cofre-2" src="img/cofre.svg" alt="Armari" class="draggable-object">
+                            <img id="cofre-3" src="img/cofre.svg" alt="Armari" class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list puerta-icon">
+                        <div class="icon-list__label">
+                            Puertas:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="puerta-1" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-2" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-3" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-4" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-5" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-6" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-7" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-8" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-9" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-10" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-11" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-12" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-13" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-14" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-15" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-16" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-17" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-18" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-19" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                            <img id="puerta-20" src="img/puerta.svg" alt="Puertas" class="draggable-object">
+                        </div>
+                    </div>
+                </div>
+                <div class="icon-column">
+                    <div class="icon-list armari-icon">
+                        <div class="icon-list__label">
+                            Biblioteca:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="armari-1" src="img/armari.svg" alt="Biblioteca" class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list mesa-hechiero-icon">
+                        <div class="icon-list__label">
+                            Mesa de Hechicero:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="mesa-hechiero-1" src="img/mesa-hechiero.svg" alt="Mesa de Hechicero"
+                                class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list banco-alquimista-icon">
+                        <div class="icon-list__label">
+                            Banco de Alquimista:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="banco-alquimista-1" src="img/banco-alquimista.svg" alt="Banco de Alquimista"
+                                class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list trono-icon">
+                        <div class="icon-list__label">
+                            Trono:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="trono-1" src="img/trono.svg" alt="Trono" class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list chimenea-icon">
+                        <div class="icon-list__label">
+                            Chimenea:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="chimenea-1" src="img/chimenea.svg" alt="Chimenea" class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list almacena-icon">
+                        <div class="icon-list__label">
+                            Almacena:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="almacena-1" src="img/almacena.svg" alt="Almacena" class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list tumba-icon">
+                        <div class="icon-list__label">
+                            Tumba:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="tumba-1" src="img/tumba.svg" alt="Tumba" class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list mesa-tortura-icon">
+                        <div class="icon-list__label">
+                            Mesa de Tortura:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="mesa-tortura-1" src="img/mesa-tortura.svg" alt="Mesa de Tortura"
+                                class="draggable-object">
+                        </div>
+                    </div>
+                    <div class="icon-list armas-icon">
+                        <div class="icon-list__label">
+                            Armas:
+                        </div>
+                        <div class="icon-list__imgs">
+                            <img id="armas-1" src="img/armas.svg" alt="Armas" class="draggable-object">
                         </div>
                     </div>
                 </div>
@@ -87,9 +344,7 @@
                 <h2>Per fer!</h2>
                 <ul>
                     <li>Funció imprimir</li>
-                    <li>Funció guardar</li>
-                    <li>Funció carregar</li>
-                    <li>Afegir la resta de items</li>
+                    <li>Al guardar hem de refenrenciar bé les coordenades respect ela imatge</li>
                     <li>Poder escriure notes de missió</li>
                     <li>Poder escrire titol i descripció de la missió</li>
                 </ul>
@@ -97,6 +352,8 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/interactjs@1.10.11/dist/interact.min.js"></script>
+    <script src="node_modules/dom-to-image-more/dist/dom-to-image-more.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.3/html2canvas.min.js"></script> -->
     <script src="scripts.js"></script>
 </body>
 

@@ -14,14 +14,21 @@ draggableObjects.forEach(object => {
     object.addEventListener('dblclick', rotateImage);
 });
 
+// Usamos interact.js para hacer los objetos arrastrables
 interact('.draggable-object')
     .draggable({
+        // enable inertial throwing
+        inertia: true,
+
         modifiers: [
             interact.modifiers.restrictRect({
-                restriction: '.board img',
+                restriction: '.board',
                 endOnly: true
             })
         ],
+        // enable autoScrol
+        autoScroll: true,
+
         listeners: {
             move(event) {
                 const target = event.target;
@@ -53,3 +60,80 @@ function resetDraggableObjects() {
 // Asociar la función resetDraggableObjects al evento "click" del botón de "reset"
 const resetButton = document.getElementById('reset-button');
 resetButton.addEventListener('click', resetDraggableObjects);
+
+// Función para guardar la posición de los objetos arrastrables en un archivo y descargarlo
+function saveDraggableObjects() {
+    const draggableObjects = document.querySelectorAll('.draggable-object');
+    const data = [];
+
+    draggableObjects.forEach(object => {
+        data.push({
+            id: object.id,
+            x: parseFloat(object.getAttribute('data-x')) || 0,
+            y: parseFloat(object.getAttribute('data-y')) || 0,
+            rotation: parseFloat(object.getAttribute('data-rotation')) || 0
+        });
+    });
+
+    const dataString = JSON.stringify(data);
+    const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataString);
+    const exportFileDefaultName = 'data.json';
+
+    const linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+}
+// Asociar la función saveDraggableObjects al evento "click" del botón de "guardar"
+const saveButton = document.getElementById('save-button');
+saveButton.addEventListener('click', saveDraggableObjects);
+
+function loadDraggableObjects(event) {
+    const file = event.target.files[0];
+    if (!file) {
+        return;
+    }
+
+    const fileReader = new FileReader();
+
+    fileReader.onload = function (fileLoadedEvent) {
+        const data = JSON.parse(fileLoadedEvent.target.result);
+
+        data.forEach(item => {
+            const object = document.getElementById(item.id);
+
+            if (object) {
+                object.style.transform = `translate(${item.x}px, ${item.y}px) rotate(${item.rotation}deg)`;
+                object.setAttribute('data-x', item.x);
+                object.setAttribute('data-y', item.y);
+                object.setAttribute('data-rotation', item.rotation);
+            }
+        });
+    };
+
+    fileReader.readAsText(file);
+}
+
+// Asociar la función loadDraggableObjects al evento "change" del input "load-file"
+const loadFileInput = document.getElementById('load-file');
+loadFileInput.addEventListener('change', loadDraggableObjects);
+
+
+function captureBoard() {
+    const board = document.querySelector('.board');
+
+    domtoimage.toPng(board)
+        .then(function (dataUrl) {
+            const link = document.createElement('a');
+            link.href = dataUrl;
+            link.download = 'board_capture.png';
+            link.click();
+        })
+        .catch(function (error) {
+            console.error('oops, something went wrong!', error);
+        });
+}
+
+// Asociar la función printBoard al evento "click" del botón de "Imprimir"
+const printButton = document.getElementById('print-button');
+printButton.addEventListener('click', captureBoard);

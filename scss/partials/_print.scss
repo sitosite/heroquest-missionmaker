@@ -1,0 +1,7 @@
+@media print {
+
+    /* Ajusta los objetos arrastrables para que mantengan sus posiciones durante la impresión */
+    .draggable-object {
+        position: absolute !important;
+    }
+}
